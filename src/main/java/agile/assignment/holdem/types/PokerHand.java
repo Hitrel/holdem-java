@@ -1,5 +1,6 @@
-package agile.assignment.holdem;
+package agile.assignment.holdem.types;
 
+import agile.assignment.holdem.Card;
 import jdk.jshell.spi.ExecutionControl.NotImplementedException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +26,8 @@ public abstract class PokerHand implements Comparable<PokerHand> {
     }
 
     public static PokerHand handResolve(List<Card> hand) throws Exception{
-        //TODO handResolve
+
+
         throw new NotImplementedException("");
     }
 

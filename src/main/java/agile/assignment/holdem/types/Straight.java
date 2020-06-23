@@ -1,4 +1,3 @@
 package agile.assignment.holdem.types;
 
-public class Straight {
-}
+public class Straight extends HighCard { }

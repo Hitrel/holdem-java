@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 @Getter
@@ -53,7 +54,7 @@ public class CardResolver {
 
             cardList.add(newCard);
         }
-
+        cardList.sort(Comparator.reverseOrder());
         return cardList;
     }
 
