@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class HoldemTests {
@@ -24,6 +25,7 @@ public class HoldemTests {
         add(new Card(Decors.Spade, 5));
         add(new Card(Decors.Club, 9));
         add(new Card(Decors.Diamond, 13));
+        sort(Comparator.reverseOrder());
     }};
 
     List<Card> white = new ArrayList<>() {{
@@ -32,6 +34,7 @@ public class HoldemTests {
         add(new Card(Decors.Spade, 4));
         add(new Card(Decors.Club, 8));
         add(new Card(Decors.Heart, 14));
+        sort(Comparator.reverseOrder());
     }};
     @Test
     @DisplayName("ParseString")

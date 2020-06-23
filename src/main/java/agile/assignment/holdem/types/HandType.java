@@ -1,4 +1,4 @@
-package agile.assignment.holdem;
+package agile.assignment.holdem.types;
 
 import lombok.Getter;
 

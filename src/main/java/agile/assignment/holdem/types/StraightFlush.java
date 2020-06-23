@@ -1,4 +1,3 @@
 package agile.assignment.holdem.types;
 
-public class StraightFlush {
-}
+class StraightFlush extends Straight { }
