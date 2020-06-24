@@ -1,14 +1,20 @@
 package agile.assignment.holdem.types;
 
-import agile.assignment.holdem.Card;
+import agile.assignment.holdem.card.Card;
+import lombok.Getter;
+import lombok.Setter;
 
-public class FullHouse extends PokerHand {
-    protected Card ThreeKind;
-    protected Card Pair;
+import java.util.List;
 
-    @Override
-    public int compareTo(PokerHand targetHand) {
-        // TODO Full House compare
-        return 0;
+
+public class FullHouse extends TwoPair {
+
+    public FullHouse(Card threeKind, Card pair, List<Card> remains, List<Card> hand) {
+        super(threeKind, pair, remains, hand);
+        setHandType(HandType.FULL_HOUSE);
+    }
+
+    public Card getThreeKind() {
+        return getHighPair();
     }
 }

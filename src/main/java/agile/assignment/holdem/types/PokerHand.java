@@ -1,6 +1,6 @@
 package agile.assignment.holdem.types;
 
-import agile.assignment.holdem.Card;
+import agile.assignment.holdem.card.Card;
 import jdk.jshell.spi.ExecutionControl.NotImplementedException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,11 +18,14 @@ public abstract class PokerHand implements Comparable<PokerHand> {
 
     protected HandType handType;
 
+    public PokerHand(List<Card> hand) {
+        setHand(hand);
+    }
+
 
     public static PokerHand resolve(List<Card> hand) throws Exception {
-        var new_hand = PokerHand.handResolve(hand);
 
-        return new_hand;
+        return PokerHand.handResolve(hand);
     }
 
     public static PokerHand handResolve(List<Card> hand) throws Exception{
@@ -47,7 +50,17 @@ public abstract class PokerHand implements Comparable<PokerHand> {
     }
 
     @Override
-    public abstract int compareTo(PokerHand targetHand);
+    public int compareTo(PokerHand targetHand) {
+        if (targetHand.getHandType().code > getHandType().code) {
+            return -1;
+        } else if (targetHand.getHandType().code < getHandType().code) {
+            return  1;
+        } else {
+            return highCardCompare(targetHand);
+        }
+    }
+
+    public abstract int highCardCompare(PokerHand targetHand);
 }
 
 

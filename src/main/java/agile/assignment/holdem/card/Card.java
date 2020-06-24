@@ -1,4 +1,4 @@
-package agile.assignment.holdem;
+package agile.assignment.holdem.card;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +18,13 @@ public class Card implements Comparable<Card>, Serializable {
 
     @Override
     public int compareTo(Card target) {
-        return numeralPattern - target.getNumeralPattern();
+        if (numeralPattern > target.getNumeralPattern()) {
+            return 1;
+        } else if (numeralPattern < target.getNumeralPattern()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
 

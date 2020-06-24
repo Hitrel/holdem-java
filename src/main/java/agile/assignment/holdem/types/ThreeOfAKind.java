@@ -1,13 +1,16 @@
 package agile.assignment.holdem.types;
 
-import agile.assignment.holdem.Card;
+import agile.assignment.holdem.card.Card;
 
-public class ThreeOfAKind extends PokerHand {
+import java.util.List;
+
+public class ThreeOfAKind extends Pair {
     protected Card kind;
 
-    @Override
-    public int compareTo(PokerHand targetHand) {
-        // TODO Three of a Kind compare
-        return 0;
+
+    public ThreeOfAKind(Card kind, List<Card> remains, List<Card> hand) {
+        super(kind, remains, hand);
+        setHandType(HandType.THREE_OF_A_KIND);
     }
+
 }

@@ -1,8 +1,5 @@
 package agile.assignment.holdem.types;
 
-import lombok.Getter;
-
-@Getter
 public enum HandType implements Comparable<HandType> {
     HIGH_CARD(0),
     PAIR(1),
@@ -17,7 +14,5 @@ public enum HandType implements Comparable<HandType> {
 
     int code;
 
-    HandType(int code) {
-        code = code;
-    }
+    HandType(int code) {}
 }

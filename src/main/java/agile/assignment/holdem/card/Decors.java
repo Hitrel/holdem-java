@@ -1,4 +1,4 @@
-package agile.assignment.holdem;
+package agile.assignment.holdem.card;
 
 public enum Decors {
     Spade("S"),
