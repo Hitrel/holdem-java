@@ -24,7 +24,7 @@ public class HighCard extends PokerHand {
         var selfHand = getHand();
         var target = targetHand.getHand();
 
-        for(int i = 0; i <= 5; i++) {
+        for(int i = 0; i < hand.size(); i++) {
             var compare = selfHand.get(i).compareTo(target.get(i));
             if (compare > 0) {
                 setHighCard(selfHand.get(i));

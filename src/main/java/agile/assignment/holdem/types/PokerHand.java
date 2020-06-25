@@ -27,7 +27,7 @@ public abstract class PokerHand implements Comparable<PokerHand> {
     }
 
 
-    public static PokerHand handResolve(List<Card> hand) throws Exception{
+    public static HighCard handResolve(List<Card> hand) throws Exception{
         hand.sort(Comparator.reverseOrder());
             var handType = resolveHandType(hand);
             return switch (handType) {

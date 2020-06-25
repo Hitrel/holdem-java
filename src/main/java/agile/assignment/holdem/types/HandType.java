@@ -14,5 +14,7 @@ public enum HandType implements Comparable<HandType> {
 
     int code;
 
-    HandType(int code) {}
+    HandType(int code) {
+        this.code = code;
+    }
 }

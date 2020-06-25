@@ -34,10 +34,14 @@ public class Card implements Comparable<Card>, Serializable {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "decors=" + decors +
-                ", numeralPattern=" + numeralPattern +
-                '}';
+        return getDecors().toString() + " " + switch (getNumeralPattern()) {
+            case 10 -> "T";
+            case 11 -> "J";
+            case 12 -> "Q";
+            case 13 -> "K";
+            case 14 -> "A";
+            default -> toString();
+        };
     }
 
     @Override
