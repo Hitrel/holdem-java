@@ -53,7 +53,7 @@ public class HoldemTests {
     void parseNumberPattern() throws Exception {
         var resolver = new CardResolver();
         assertEquals(2,resolver.parseNumber("2S") );
-        assertEquals(10,resolver.parseNumber("10D") );
+        assertEquals(10,resolver.parseNumber("TD") );
         assertEquals(13, resolver.parseNumber("KC"));
         assertEquals(14, resolver.parseNumber("AH"));
     }
@@ -379,4 +379,111 @@ public class HoldemTests {
         Assertions.assertEquals(0, royalFlush1.compareTo(royalFlush2));
     }
 
+    @Test
+    @DisplayName("build HighCard")
+    void buildHighCard() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:2H,3D,8S,TC,AD");
+        var black = PokerHand.handResolve(resolver.getBlack());
+        System.out.println(black.getHand());
+        Assertions.assertEquals(HandType.HIGH_CARD, black.getHandType());
+    }
+
+    @Test
+    @DisplayName("build Pair")
+    void buildPair() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:2H,2D,3D,TS,JD");
+        var black = PokerHand.handResolve(resolver.getBlack());
+
+        Assertions.assertEquals(HandType.PAIR, black.getHandType());
+    }
+
+    @Test
+    @DisplayName("build TwoPair")
+    void buildTwoPair() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:3H,3S,4H,4D,5S");
+        var black = PokerHand.handResolve(resolver.getBlack());
+
+        Assertions.assertEquals(HandType.TWO_PAIRS, black.getHandType());
+    }
+
+    @Test
+    @DisplayName("build Three of a kind")
+    void buildThreeOfAKind() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:5H,5D,5C,6S,7H");
+        var black = PokerHand.handResolve(resolver.getBlack());
+
+        Assertions.assertEquals(HandType.THREE_OF_A_KIND, black.getHandType());
+    }
+
+    @Test
+    @DisplayName("build Straight")
+    void buildStraight() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:2H,3D,4C,5H,AD");
+        resolver.parseHand("White:5H,6D,7S,8H,9D");
+
+        var black = PokerHand.handResolve(resolver.getBlack());
+        Assertions.assertEquals(HandType.STRAIGHT, black.getHandType());
+
+        var white = PokerHand.handResolve(resolver.getWhite());
+        Assertions.assertEquals(HandType.STRAIGHT, white.getHandType());
+    }
+
+    @Test
+    @DisplayName("build Flush")
+    void buildFlush() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:2H,4H,7H,9H,TH");
+        var black = PokerHand.handResolve(resolver.getBlack());
+
+        Assertions.assertEquals(HandType.FLUSH, black.getHandType());
+    }
+
+    @Test
+    @DisplayName("build Full House")
+    void buildFullHouse() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:6H,6D,6S,8H,8C");
+        var black = PokerHand.handResolve(resolver.getBlack());
+
+        Assertions.assertEquals(HandType.FULL_HOUSE, black.getHandType());
+    }
+
+    @Test
+    @DisplayName("build Four of a kind")
+    void buildFourOfAKind() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:JH,JD,JC,JS,5S");
+        var black = PokerHand.handResolve(resolver.getBlack());
+
+        Assertions.assertEquals(HandType.FOUR_OF_A_KIND, black.getHandType());
+    }
+
+    @Test
+    @DisplayName("build Straight Flush")
+    void buildStraightFlush() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:2H,3H,4H,5H,AH");
+        resolver.parseHand("White:5D,6D,7D,8D,9D");
+
+        var black = PokerHand.handResolve(resolver.getBlack());
+        Assertions.assertEquals(HandType.STRAIGHT_FLUSH, black.getHandType());
+
+        var white = PokerHand.handResolve(resolver.getWhite());
+        Assertions.assertEquals(HandType.STRAIGHT_FLUSH, white.getHandType());
+    }
+
+    @Test
+    @DisplayName("build Royal Flush")
+    void buildRoyalFlush() throws Exception {
+        var resolver = new CardResolver();
+        resolver.parseHand("Black:TH,JH,QH,KH,AH");
+        var black = PokerHand.handResolve(resolver.getBlack());
+
+        Assertions.assertEquals(HandType.ROYAL_FLUSH, black.getHandType());
+    }
 }

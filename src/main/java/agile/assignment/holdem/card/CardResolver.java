@@ -58,10 +58,6 @@ public class CardResolver {
     }
 
     public int parseNumber(String pattern) throws Exception{
-        if (pattern.length() > 2) {
-            return 10;
-        }
-
         return switch (pattern.charAt(0)) {
             case '2' -> 2;
             case '3' -> 3;
@@ -71,6 +67,7 @@ public class CardResolver {
             case '7' -> 7;
             case '8' -> 8;
             case '9' -> 9;
+            case 'T' -> 10;
             case 'J' -> 11;
             case 'Q' -> 12;
             case 'K' -> 13;
